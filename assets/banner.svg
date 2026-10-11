@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 240" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1d"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#080d1a"/>
+    </linearGradient>
+
+    <!-- Title & Accent Gradients -->
+    <linearGradient id="streamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="50%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+
+    <linearGradient id="pulseGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+
+    <linearGradient id="scanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#38bdf8" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#a855f7" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Glow Filter -->
+    <filter id="streamGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <!-- CDC Stream Grid Pattern -->
+    <pattern id="streamGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#38bdf8" stroke-width="0.5" stroke-opacity="0.1"/>
+      <circle cx="0" cy="0" r="1" fill="#38bdf8" fill-opacity="0.2"/>
+    </pattern>
+
+    <!-- Dynamic Stream Keyframes -->
+    <style>
+      @keyframes flowDash {
+        0% { stroke-dashoffset: 120; }
+        100% { stroke-dashoffset: 0; }
+      }
+      @keyframes packetFlow1 {
+        0% { transform: translateX(0px); opacity: 0.2; }
+        50% { opacity: 1; }
+        100% { transform: translateX(260px); opacity: 0.2; }
+      }
+      @keyframes packetFlow2 {
+        0% { transform: translateX(0px); opacity: 0.2; }
+        50% { opacity: 0.9; }
+        100% { transform: translateX(260px); opacity: 0.2; }
+      }
+      @keyframes pulseNode {
+        0%, 100% { transform: scale(1); filter: drop-shadow(0 0 6px rgba(6, 182, 212, 0.6)); }
+        50% { transform: scale(1.08); filter: drop-shadow(0 0 16px rgba(139, 92, 246, 0.8)); }
+      }
+      @keyframes scanSweep {
+        0% { transform: translateY(0px); opacity: 0.2; }
+        50% { opacity: 0.7; }
+        100% { transform: translateY(240px); opacity: 0.2; }
+      }
+      @keyframes rippleRing {
+        0% { r: 8px; opacity: 0.9; stroke-width: 2px; }
+        100% { r: 36px; opacity: 0; stroke-width: 0.5px; }
+      }
+
+      .scanner-beam { animation: scanSweep 6s infinite linear; }
+      .stream-wire { stroke-dasharray: 8, 8; animation: flowDash 3s infinite linear; }
+      .stream-packet-1 { animation: packetFlow1 3s infinite linear; }
+      .stream-packet-2 { animation: packetFlow2 2.4s infinite linear 0.8s; }
+      .node-core { transform-origin: 90px 120px; animation: pulseNode 3.5s infinite ease-in-out; }
+      .radar-ripple { animation: rippleRing 2.6s infinite cubic-bezier(0.1, 0.8, 0.3, 1); }
+      .title-bold { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 800; }
+      .sub-caps { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600; letter-spacing: 1.5px; }
+    </style>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="900" height="240" fill="url(#bgGrad)" rx="16"/>
+  <rect width="900" height="240" fill="url(#streamGrid)" rx="16"/>
+
+  <!-- Scanning Sweep Line (Background Layer) -->
+  <rect class="scanner-beam" x="0" y="0" width="900" height="2" fill="url(#scanGrad)" opacity="0.5"/>
+
+  <!-- Decorative CDC Pipeline Lines (Background / Ambient) -->
+  <path class="stream-wire" d="M 120 70 L 260 70 L 320 100" fill="none" stroke="#06b6d4" stroke-width="1.5" opacity="0.35"/>
+  <path class="stream-wire" d="M 120 170 L 260 170 L 320 140" fill="none" stroke="#8b5cf6" stroke-width="1.5" opacity="0.35"/>
+  <path class="stream-wire" d="M 640 90 L 780 90 L 840 60" fill="none" stroke="#3b82f6" stroke-width="1.5" opacity="0.35"/>
+  <path class="stream-wire" d="M 640 150 L 760 150 L 840 180" fill="none" stroke="#10b981" stroke-width="1.5" opacity="0.35"/>
+
+  <!-- Left CDC Event Source Hub & Stream Node -->
+  <g transform="translate(30, 0)">
+    <circle class="radar-ripple" cx="80" cy="120" r="16" fill="none" stroke="#06b6d4"/>
+    <circle cx="80" cy="120" r="56" fill="none" stroke="#06b6d4" stroke-width="1" stroke-dasharray="3,5" opacity="0.25"/>
+    <circle cx="80" cy="120" r="38" fill="none" stroke="#3b82f6" stroke-width="1.2" opacity="0.4"/>
+    
+    <!-- Central CDC Engine Node -->
+    <g class="node-core">
+      <circle cx="80" cy="120" r="24" fill="#0f172a" stroke="url(#streamGrad)" stroke-width="2.5"/>
+      <!-- CDC Lightning / Change Icon -->
+      <path d="M 82 108 L 73 121 L 79 121 L 77 132 L 87 119 L 81 119 Z" fill="url(#streamGrad)"/>
+    </g>
+
+    <!-- Source Database Cylinders (Micro representations) -->
+    <g transform="translate(62, 50)" opacity="0.75">
+      <rect x="0" y="3" width="36" height="12" rx="3" fill="#1e293b" stroke="#06b6d4" stroke-width="1"/>
+      <ellipse cx="18" cy="3" rx="18" ry="4" fill="#334155" stroke="#06b6d4" stroke-width="1"/>
+    </g>
+    <g transform="translate(62, 175)" opacity="0.75">
+      <rect x="0" y="3" width="36" height="12" rx="3" fill="#1e293b" stroke="#8b5cf6" stroke-width="1"/>
+      <ellipse cx="18" cy="3" rx="18" ry="4" fill="#334155" stroke="#8b5cf6" stroke-width="1"/>
+    </g>
+  </g>
+
+  <!-- Right Target Event Stream Hub -->
+  <g transform="translate(740, 0)">
+    <circle class="radar-ripple" cx="70" cy="120" r="16" fill="none" stroke="#10b981"/>
+    <circle cx="70" cy="120" r="56" fill="none" stroke="#10b981" stroke-width="1" stroke-dasharray="3,5" opacity="0.25"/>
+    <circle cx="70" cy="120" r="38" fill="none" stroke="#3b82f6" stroke-width="1.2" opacity="0.4"/>
+    
+    <!-- Central Stream Target Node -->
+    <circle cx="70" cy="120" r="24" fill="#0f172a" stroke="url(#pulseGrad)" stroke-width="2.5"/>
+    <!-- Event Stream Sync Icon -->
+    <path d="M 61 115 A 9 9 0 0 1 76 112 L 76 109 L 81 114 L 76 119 L 76 116 A 5 5 0 0 0 65 119 Z M 79 125 A 9 9 0 0 1 64 128 L 64 131 L 59 126 L 64 121 L 64 124 A 5 5 0 0 0 75 121 Z" fill="url(#pulseGrad)"/>
+  </g>
+
+  <!-- Dynamic Flying Event Packets along pipeline -->
+  <g transform="translate(180, 0)">
+    <circle class="stream-packet-1" cx="20" cy="65" r="3.5" fill="#38bdf8"/>
+    <circle class="stream-packet-2" cx="30" cy="175" r="3" fill="#c084fc"/>
+    <circle class="stream-packet-1" cx="340" cy="65" r="3.5" fill="#10b981"/>
+    <circle class="stream-packet-2" cx="350" cy="175" r="3" fill="#38bdf8"/>
+  </g>
+
+  <!-- FOREGROUND TEXT (Clear, crisp, high contrast, never occluded) -->
+  <g transform="translate(450, 0)">
+    <!-- Subtitle Pill Badge -->
+    <rect x="-195" y="44" width="390" height="24" rx="12" fill="#1e293b" fill-opacity="0.85" stroke="#38bdf8" stroke-width="1" stroke-opacity="0.4"/>
+    <text class="sub-caps" x="0" y="60" text-anchor="middle" fill="#38bdf8" font-size="10.5">⚡ REAL-TIME REPLICATION &amp; STREAMING PIPELINES</text>
+
+    <!-- Main Title -->
+    <text class="title-bold" x="0" y="112" text-anchor="middle" fill="url(#streamGrad)" font-size="32" filter="url(#streamGlow)">Awesome Change Data Capture</text>
+    <text class="title-bold" x="0" y="112" text-anchor="middle" fill="#ffffff" font-size="32">Awesome Change Data Capture</text>
+
+    <!-- Subtitle / Tagline -->
+    <text class="sub-caps" x="0" y="145" text-anchor="middle" fill="#cbd5e1" font-size="12.5" font-weight="500" letter-spacing="0.5">Curated CDC Platforms • SaaS Solutions • Open-Source Engines • Kafka &amp; Cloud Pipelines</text>
+
+    <!-- Architecture Feature Badges -->
+    <g transform="translate(0, 172)">
+      <rect x="-240" y="0" width="105" height="22" rx="11" fill="#0f172a" stroke="#06b6d4" stroke-width="1" stroke-opacity="0.5"/>
+      <text class="sub-caps" x="-187" y="15" text-anchor="middle" fill="#38bdf8" font-size="9.5">LOG-BASED CDC</text>
+
+      <rect x="-120" y="0" width="115" height="22" rx="11" fill="#0f172a" stroke="#3b82f6" stroke-width="1" stroke-opacity="0.5"/>
+      <text class="sub-caps" x="-62" y="15" text-anchor="middle" fill="#60a5fa" font-size="9.5">ZERO-DATA LOSS</text>
+
+      <rect x="10" y="0" width="105" height="22" rx="11" fill="#0f172a" stroke="#8b5cf6" stroke-width="1" stroke-opacity="0.5"/>
+      <text class="sub-caps" x="62" y="15" text-anchor="middle" fill="#c084fc" font-size="9.5">SUB-SECOND LATENCY</text>
+
+      <rect x="130" y="0" width="110" height="22" rx="11" fill="#0f172a" stroke="#10b981" stroke-width="1" stroke-opacity="0.5"/>
+      <text class="sub-caps" x="185" y="15" text-anchor="middle" fill="#34d399" font-size="9.5">OPEN-SOURCE</text>
+    </g>
+  </g>
+</svg>
