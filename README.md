@@ -60,6 +60,8 @@ flowchart LR
   - [🌊 Real-Time Data Pipelines & Gateways](#-real-time-data-pipelines--gateways)
 - [🎯 Selection Guide: Log-Based CDC vs. Query-Based Polling](#-selection-guide-log-based-cdc-vs-query-based-polling)
 - [🤝 How to Contribute](#-how-to-contribute)
+- [💖 Support & Sponsorship](#-support--sponsorship)
+- [📈 Star History](#-star-history)
 - [📜 License](#-license)
 
 ---
@@ -176,6 +178,24 @@ Contributions are welcome! If you know an open-source CDC library or SaaS replic
 2. 🌿 Create a descriptive feature branch (`git checkout -b add-cdc-tool`).
 3. 📝 Add your tool with links, pricing/stars, and architectural details in the correct section.
 4. 🚀 Open a Pull Request.
+
+---
+
+## 💖 Support & Sponsorship
+
+If you find this repository helpful in designing your real-time change data capture and streaming replication architectures, please consider supporting the project:
+
+- ⭐ **Star** this repository on GitHub.
+- 🔄 **Fork** and share with your data engineering & distributed systems teams.
+- ☕ **Buy Me a Coffee / Sponsor**: Support ongoing maintenance, updates, and open-source tooling via the [GitHub Sponsor Dashboard](https://github.com/sponsors/ishandutta2007).
+
+Thank you for supporting open-source data infrastructure! 🙏
+
+---
+
+## 📈 Star History
+
+[![Star History Chart](https://star-history.dera.page/svg?repos=ishandutta2007/Awesome-Real-Time-Change-Data-Capture-Cdc&type=date&legend=top-left)](https://star-history.dera.page/#ishandutta2007/Awesome-Real-Time-Change-Data-Capture-Cdc&type=date&legend=top-left)
 
 ---
 
